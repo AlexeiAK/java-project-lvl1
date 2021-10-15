@@ -1,0 +1,16 @@
+name: GitHub Actions (CI)
+on:
+  - push
+  - pull_request
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up openJDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: '16'
+      - name: Build with Gradle
+        run: make build
