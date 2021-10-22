@@ -1,14 +1,15 @@
 package hexlet.code;
+
 import java.util.Scanner;
 
-class Cli {
-    public static Scanner readLine() {
+public class Cli {
+    public static String readAndGetLine() {
         Scanner scanner = new Scanner(System.in);
-        return scanner;
+        return scanner.nextLine();
     }
 
-    public static Scanner readInt() {
+    public static int readAndGetInt() {
         Scanner scanner = new Scanner(System.in);
-        return scanner;
+        return scanner.nextInt();
     }
 }
