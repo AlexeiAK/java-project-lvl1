@@ -2,12 +2,14 @@ package hexlet.code;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("Welcome to the Brain Games!\n"
-            + "May I have your name?");
-        Cli.enterName();
-        System.out.println("Hello, "
-            + Cli.enterName().nextLine()
-            + "!");
-//        Cli.enterName().close();
+        System.out.print("Please enter the game number and press Enter\n"
+            + "1 - Greet\n"
+            + "0 - exit\n"
+            + "Your choice: ");
+        Cli.readInt();
+
+        if (Cli.readInt().nextInt() == 1) {
+            Greet.getGreet();
+        }
     }
 }

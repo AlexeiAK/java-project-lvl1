@@ -2,8 +2,13 @@ package hexlet.code;
 import java.util.Scanner;
 
 class Cli {
-    static Scanner enterName() {
-        Scanner name = new Scanner(System.in);
-        return name;
+    public static Scanner readLine() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner;
+    }
+
+    public static Scanner readInt() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner;
     }
 }
