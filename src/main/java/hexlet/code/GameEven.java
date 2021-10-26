@@ -18,7 +18,7 @@ public class GameEven {
                 getAnswer();
                 checkAnswer();
             } else if (winsCounter == WINS_NUMBER) {
-                System.out.println("Congratulations, " + Greet.player1Name + "!");
+                System.out.println("Congratulations, " + Greet.getName() + "!");
                 break;
             }
         }
@@ -38,7 +38,7 @@ public class GameEven {
     public static void checkAnswer() {
         if (!isNumberEven(randomInteger) && playerAnswer.equals("yes")) {
             System.out.print("'yes' is wrong answer ;(. Correct answer was 'no'.\n"
-                    + "Let's try again, " + Greet.player1Name + "!\n");
+                    + "Let's try again, " + Greet.getName() + "!\n");
             winsCounter = 0;
         } else if (!isNumberEven(randomInteger) && playerAnswer.equals("no")) {
             System.out.println("Correct!");
@@ -48,11 +48,11 @@ public class GameEven {
             winsCounter++;
         } else if (isNumberEven(randomInteger) && playerAnswer.equals("no")) {
             System.out.print("'no' is wrong answer ;(. Correct answer was 'yes'.\n"
-                    + "Let's try again, " + Greet.player1Name + "!\n");
+                    + "Let's try again, " + Greet.getName() + "!\n");
             winsCounter = 0;
         } else {
             System.out.print('"' + playerAnswer + '"' + " is wrong answer ;(\n"
-                    + "Let's try again, " + Greet.player1Name + "!\n");
+                    + "Let's try again, " + Greet.getName() + "!\n");
             winsCounter = 0;
         }
     }
