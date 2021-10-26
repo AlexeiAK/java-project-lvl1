@@ -1,8 +1,8 @@
-# Clean results of previous build, and generate executable file
+# Clean results of previous build: Generate executable archive
 install:
 	./gradlew clean install
 
-# Run executable file (do this after build)
+# Run executable file (do this after install)
 run-dist:
 	./build/install/app/bin/app
 
@@ -19,7 +19,7 @@ run:
 lint:
 	./gradlew checkstyleMain
 
-#
+# Execute install tasks + another tasks
 build:
 	./gradlew clean build
 
