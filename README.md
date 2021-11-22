@@ -6,4 +6,5 @@
 ### Example game Even
 [![asciicast](https://asciinema.org/a/444530.svg)](https://asciinema.org/a/444530)
 
-
+### Example game Calc
+[![asciicast](https://asciinema.org/a/450355.svg)](https://asciinema.org/a/450355)
