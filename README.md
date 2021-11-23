@@ -8,3 +8,6 @@
 
 ### Example game Calc
 [![asciicast](https://asciinema.org/a/450355.svg)](https://asciinema.org/a/450355)
+
+### Example game Greatest common divisor (GCD)
+[![asciicast](https://asciinema.org/a/450878.svg)](https://asciinema.org/a/450878)
