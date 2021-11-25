@@ -7,7 +7,10 @@
 [![asciicast](https://asciinema.org/a/444530.svg)](https://asciinema.org/a/444530)
 
 ### Example game Calc
-[![asciicast](https://asciinema.org/a/450355.svg)](https://asciinema.org/a/450355)
+[![asciicast](https://asciinema.org/a/451480.svg)](https://asciinema.org/a/451480)
 
 ### Example game Greatest common divisor (GCD)
 [![asciicast](https://asciinema.org/a/450878.svg)](https://asciinema.org/a/450878)
+
+### Example game Progression
+[![asciicast](https://asciinema.org/a/451479.svg)](https://asciinema.org/a/451479)
