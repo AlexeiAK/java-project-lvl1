@@ -4,6 +4,9 @@ public class Engine {
     public static final int MAX_ROUNDS = 3;
 
     public static void startGame(String gameRules, String[] question, String[] answer) {
+        Greet.getGreet();
+        String playerName = Greet.getName();
+
         System.out.println(gameRules);
 
         int correctAnswersCounter = 0;
@@ -19,13 +22,13 @@ public class Engine {
             } else {
                 System.out.print("'" + playerAnswer + "' is wrong answer ;(. Correct answer was '"
                         + answer[i] + "'.\n"
-                        + "Let's try again, " + Greet.getName() + "!\n");
+                        + "Let's try again, " + playerName + "!\n");
                 break;
             }
         }
 
         if (correctAnswersCounter == MAX_ROUNDS) {
-            System.out.println("Congratulations, " + Greet.getName() + "!");
+            System.out.println("Congratulations, " + playerName + "!");
         }
 
     }

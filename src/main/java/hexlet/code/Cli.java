@@ -7,9 +7,4 @@ public class Cli {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
-
-    public static int readAndGetInt() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
-    }
 }
