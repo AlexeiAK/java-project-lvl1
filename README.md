@@ -14,3 +14,6 @@
 
 ### Example game Progression
 [![asciicast](https://asciinema.org/a/451479.svg)](https://asciinema.org/a/451479)
+
+### Example game Prime
+[![asciicast](https://asciinema.org/a/452271.svg)](https://asciinema.org/a/452271)
