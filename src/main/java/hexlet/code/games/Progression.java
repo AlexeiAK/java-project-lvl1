@@ -1,17 +1,15 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Randomizer;
 
 public class Progression {
     static final String GAME_RULES = "What is number is missing in the progression?";
 
-    static final int MAX_OF_RANDOM_RANGE = 1;
-    static final int MIN_OF_RANDOM_RANGE = 100;
-
     static final int MIN_OF_PROGRESSION_LENGTH = 5;
     static final int MAX_OF_PROGRESSION_LENGTH = 10;
 
-    private static String hiddenElement = "";
+    private static String hiddenElement;
 
     public static void startGame() {
         String[] question = new String[Engine.MAX_ROUNDS];
@@ -28,12 +26,12 @@ public class Progression {
     }
 
     public static String[] getProgressionWithAnswer() {
-        int progressionLength = getRandomInteger(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
-        int firstNumberOfProgression = getNumber();
-        int stepOfProgression = getRandomInteger(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
+        int progressionLength = Randomizer.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
+        int firstNumberOfProgression = Randomizer.getNumberFromFinalRange();
+        int stepOfProgression = Randomizer.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
 
-        int indexOfhiddenElement = getRandomInteger(MIN_OF_PROGRESSION_LENGTH, progressionLength);
-//        String hiddenElement = "";
+        int indexOfhiddenElement = Randomizer.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, progressionLength);
+//        String hiddenElement = ""; // для вопроса, который ниже
 
         int[] progressionIntRow = new int[progressionLength];
         fillTheProgression(progressionIntRow, firstNumberOfProgression, stepOfProgression);
@@ -67,7 +65,7 @@ public class Progression {
     }
 
     public static void hideRandomElementOfStringRow(String[] progression, int indexOfhiddenElement
-            /*, String hiddenElement*/) { // почему hiddenElement в методе getProgressionWithAnswer не изменяется?
+            /*, String hiddenElement*/) { // почему hiddenElement не изменяется этим методом?
         hiddenElement = progression[indexOfhiddenElement];
         progression[indexOfhiddenElement] = "..";
     }
@@ -80,14 +78,5 @@ public class Progression {
         }
 
         return stringOfArray;
-    }
-
-    private static int getNumber() {
-        return getRandomInteger(MAX_OF_RANDOM_RANGE, MIN_OF_RANDOM_RANGE);
-    }
-
-    public static int getRandomInteger(int min, int max) {
-        max -= min;
-        return (int) (Math.random() * ++max) + min;
     }
 }

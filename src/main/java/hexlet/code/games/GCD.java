@@ -1,15 +1,12 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Randomizer;
 
 import java.math.BigInteger;
-//import java.math.BigInteger;
 
 public class GCD {
     static final String GAME_RULES = "Find the greatest common divisor of given numbers.";
-
-    static final int MAX_OF_RANDOM_RANGE = 1;
-    static final int MIN_OF_RANDOM_RANGE = 100;
 
     public static void startGame() {
         String[] question = new String[Engine.MAX_ROUNDS];
@@ -26,8 +23,8 @@ public class GCD {
     }
 
     public static String[] getGcdWithAnswer() {
-        BigInteger number1 = new BigInteger(Integer.toString(getNumber()));
-        BigInteger number2 = new BigInteger(Integer.toString(getNumber()));
+        BigInteger number1 = new BigInteger(Integer.toString(Randomizer.getNumberFromFinalRange()));
+        BigInteger number2 = new BigInteger(Integer.toString(Randomizer.getNumberFromFinalRange()));
         BigInteger gcd = number1.gcd(number2);
 
         String[] gcdWithAnswer = new String[2];
@@ -35,15 +32,6 @@ public class GCD {
         gcdWithAnswer[1] = gcd.toString();
 
         return gcdWithAnswer;
-    }
-
-    private static int getNumber() {
-        return getRandomInteger(MAX_OF_RANDOM_RANGE, MIN_OF_RANDOM_RANGE);
-    }
-
-    public static int getRandomInteger(int min, int max) {
-        max -= min;
-        return (int) (Math.random() * ++max) + min;
     }
 
 }
