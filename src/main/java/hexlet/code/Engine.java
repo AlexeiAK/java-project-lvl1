@@ -12,8 +12,8 @@ public class Engine {
         int correctAnswersCounter = 0;
 
         for (int i = 0; i < MAX_ROUNDS; i++) {
-            System.out.print("Queestion: " + question[i]);
-            System.out.print("\nYour answer: ");
+            System.out.println("Question: " + question[i]);
+            System.out.print("Your answer: ");
             String playerAnswer = Cli.readAndGetLine();
 
             if (answer[i].equals(playerAnswer)) {
