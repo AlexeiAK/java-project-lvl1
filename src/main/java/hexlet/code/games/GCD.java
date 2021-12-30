@@ -28,7 +28,7 @@ public class GCD {
         BigInteger gcd = number1.gcd(number2);
 
         String[] gcdWithAnswer = new String[2];
-        gcdWithAnswer[0] = number1 + " " + " " + number2;
+        gcdWithAnswer[0] = number1 + " " + number2;
         gcdWithAnswer[1] = gcd.toString();
 
         return gcdWithAnswer;
