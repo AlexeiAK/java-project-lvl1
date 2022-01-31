@@ -14,8 +14,6 @@ public class Engine {
 
         String playerName = Cli.getName();
 
-        int correctAnswersCounter = 0;
-
         for (int i = 0; i < MAX_ROUNDS; i++) {
             System.out.println("Question: " + question[i]);
             System.out.print("Your answer: ");
@@ -23,7 +21,6 @@ public class Engine {
 
             if (answer[i].equals(playerAnswer)) {
                 System.out.println("Correct!");
-                correctAnswersCounter++;
             } else {
                 System.out.print("'" + playerAnswer + "' is wrong answer ;(. Correct answer was '"
                         + answer[i] + "'.\n"
@@ -32,10 +29,7 @@ public class Engine {
             }
         }
 
-        if (correctAnswersCounter == MAX_ROUNDS) {
-            System.out.println("Congratulations, " + playerName + "!");
-        }
-
+        System.out.println("Congratulations, " + playerName + "!");
     }
 
 }
