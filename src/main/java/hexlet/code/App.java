@@ -6,14 +6,18 @@ import hexlet.code.games.GCD;
 import hexlet.code.games.Progression;
 import hexlet.code.games.Prime;
 
+import java.util.Scanner;
+
 public class App {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
         printGamesList();
         System.out.print("Your choice: ");
-        String playerChoice = Cli.readAndGetLine();
+        String playerChoice = scanner.next();
 
         switch (playerChoice) {
-            case "1" -> Greet.getGreet();
+            case "1" -> Cli.printGreet();
             case "2" -> Even.startGame();
             case "3" -> Calc.startGame();
             case "4" -> GCD.startGame();
