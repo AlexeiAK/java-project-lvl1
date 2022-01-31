@@ -1,7 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.Randomizer;
+import hexlet.code.Utils;
 
 public class Even {
     static final String GAME_RULES = "Answer 'yes' if number even otherwise answer 'no'.";
@@ -11,7 +11,7 @@ public class Even {
         String[] answer = new String[Engine.MAX_ROUNDS];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
-            question[i] = Integer.toString(Randomizer.getNumberFromFinalRange());
+            question[i] = Integer.toString(Utils.getNumberFromFinalRange());
             answer[i] = isNumberEven(Integer.parseInt(question[i]));
         }
 

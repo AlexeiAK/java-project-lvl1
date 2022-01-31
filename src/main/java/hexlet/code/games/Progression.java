@@ -1,7 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.Randomizer;
+import hexlet.code.Utils;
 
 public class Progression {
     static final String GAME_RULES = "What is number is missing in the progression?";
@@ -26,11 +26,11 @@ public class Progression {
     }
 
     public static String[] getProgressionWithAnswer() {
-        int progressionLength = Randomizer.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
-        int firstNumberOfProgression = Randomizer.getNumberFromFinalRange();
-        int stepOfProgression = Randomizer.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
+        int progressionLength = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
+        int firstNumberOfProgression = Utils.getNumberFromFinalRange();
+        int stepOfProgression = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
 
-        int indexOfhiddenElement = Randomizer.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, progressionLength);
+        int indexOfhiddenElement = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, progressionLength);
 //        String hiddenElement = ""; // для вопроса, который ниже
 
         int[] progressionIntRow = new int[progressionLength];

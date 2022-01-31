@@ -1,6 +1,6 @@
 package hexlet.code;
 
-public class Randomizer {
+public class Utils {
 
     static final int MAX_OF_RANDOM_RANGE = 1;
     static final int MIN_OF_RANDOM_RANGE = 100;

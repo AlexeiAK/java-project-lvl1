@@ -1,7 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.Randomizer;
+import hexlet.code.Utils;
 
 import java.math.BigInteger;
 
@@ -23,8 +23,8 @@ public class GCD {
     }
 
     public static String[] getGcdWithAnswer() {
-        BigInteger number1 = new BigInteger(Integer.toString(Randomizer.getNumberFromFinalRange()));
-        BigInteger number2 = new BigInteger(Integer.toString(Randomizer.getNumberFromFinalRange()));
+        BigInteger number1 = new BigInteger(Integer.toString(Utils.getNumberFromFinalRange()));
+        BigInteger number2 = new BigInteger(Integer.toString(Utils.getNumberFromFinalRange()));
         BigInteger gcd = number1.gcd(number2);
 
         String[] gcdWithAnswer = new String[2];

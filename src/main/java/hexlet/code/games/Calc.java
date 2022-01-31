@@ -1,7 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.Randomizer;
+import hexlet.code.Utils;
 
 import java.util.Random;
 
@@ -39,8 +39,8 @@ public class Calc {
         String operandB = "";
         String operator = "";
 
-        int a = Randomizer.getNumberFromMinMax(MAX_OF_RANDOM_RANGE, MIN_OF_RANDOM_RANGE);
-        int b = Randomizer.getNumberFromMinMax(MAX_OF_RANDOM_RANGE, MIN_OF_RANDOM_RANGE);
+        int a = Utils.getNumberFromMinMax(MAX_OF_RANDOM_RANGE, MIN_OF_RANDOM_RANGE);
+        int b = Utils.getNumberFromMinMax(MAX_OF_RANDOM_RANGE, MIN_OF_RANDOM_RANGE);
 
         switch (getRandomOperation()) {
             case "addition":
