@@ -9,19 +9,19 @@ public class Progression {
     static final int MIN_OF_PROGRESSION_LENGTH = 5;
     static final int MAX_OF_PROGRESSION_LENGTH = 10;
 
-    private static String hiddenElement;
+//    private static String hiddenElement;
 
     public static void startGame() {
-        String[] question = new String[Engine.MAX_ROUNDS];
-        String[] answer = new String[Engine.MAX_ROUNDS];
+//        String[] question = new String[Engine.MAX_ROUNDS];
+//        String[] answer = new String[Engine.MAX_ROUNDS];
 
         String[][] questionAndAnswer = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
-            String[] randomExpressionWithAnswer = getProgressionWithAnswer();
-
-            question[i] = randomExpressionWithAnswer[0];
-            answer[i] = randomExpressionWithAnswer[1];
+//            String[] randomExpressionWithAnswer = getProgressionWithAnswer();
+//            question[i] = randomExpressionWithAnswer[0];
+//            answer[i] = randomExpressionWithAnswer[1];
+            questionAndAnswer[i] = getProgressionWithAnswer();
         }
 
         Engine.startGame(GAME_RULES, questionAndAnswer);
@@ -31,15 +31,13 @@ public class Progression {
         int progressionLength = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
         int firstNumberOfProgression = Utils.getNumberFromFinalRange();
         int stepOfProgression = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
-
         int indexOfhiddenElement = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, progressionLength);
-//        String hiddenElement = ""; // для вопроса, который ниже
 
         int[] progressionIntRow = new int[progressionLength];
         fillTheProgression(progressionIntRow, firstNumberOfProgression, stepOfProgression);
 
         String[] progressionStringRow = intArrayToStringArray(progressionIntRow);
-        hideRandomElementOfStringRow(progressionStringRow, indexOfhiddenElement - 1/*, hiddenElement*/);
+        String hiddenElement = getAndhideRandomElementOfStringRow(progressionStringRow, indexOfhiddenElement - 1);
 
         String[] progressionWithAnswer = new String[2];
         progressionWithAnswer[0] = stringArrayToString(progressionStringRow);
@@ -66,10 +64,11 @@ public class Progression {
         return stringArray;
     }
 
-    public static void hideRandomElementOfStringRow(String[] progression, int indexOfhiddenElement
-            /*, String hiddenElement*/) { // почему hiddenElement не изменяется этим методом?
-        hiddenElement = progression[indexOfhiddenElement];
+    public static String getAndhideRandomElementOfStringRow(String[] progression, int indexOfhiddenElement) {
+        String hiddenElement = progression[indexOfhiddenElement];
         progression[indexOfhiddenElement] = "..";
+
+        return hiddenElement;
     }
 
     public static String stringArrayToString(String[] array) {
