@@ -3,7 +3,6 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class Calc {
@@ -14,18 +13,11 @@ public class Calc {
     static final int MAX_OF_RANDOM_RANGE = 1;
     static final int MIN_OF_RANDOM_RANGE = 10;
 
-//    private static int expressionAnswer;
-
     public static void startGame() {
-//        String randomOperation = getRandomOperationSign();
-//        String[] questionAndAnswer = getRandomQuestionAndAnswer();
-
-//        String[] question = new String[Engine.MAX_ROUNDS];
         String[][] questionAndAnswer = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
             questionAndAnswer[i] = getRandomQuestionAndAnswer();
-//            answer[i] = questionAndAnswer[1];
         }
 
         Engine.startGame(GAME_RULES, questionAndAnswer);
@@ -67,7 +59,7 @@ public class Calc {
         String[] questionAndAnswer = new String[2];
         questionAndAnswer[0] = operandA + " " + operator + " " + operandB;
         questionAndAnswer[1] = Integer.toString(answer);
-//        System.out.println(Arrays.toString(questionAndAnswer));
+
         return questionAndAnswer;
     }
 
