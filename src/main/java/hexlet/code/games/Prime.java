@@ -7,26 +7,35 @@ public class Prime {
     static final String GAME_RULES = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
     public static void startGame() {
-        String[] question = new String[Engine.MAX_ROUNDS];
-        String[] answer = new String[Engine.MAX_ROUNDS];
-
         String[][] questionAndAnswer = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
-            question[i] = Integer.toString(Utils.getNumberFromFinalRange());
-            answer[i] = getCorrectAnswer(Integer.parseInt(question[i]));
+            questionAndAnswer[i] = getNumberWithAnswer();
         }
 
         Engine.startGame(GAME_RULES, questionAndAnswer);
     }
 
-    public static String getCorrectAnswer(int number) {
+    public static String[] getNumberWithAnswer() {
+        int randomNumber = Utils.getNumberFromFinalRange();
+
+        String question = Integer.toString(randomNumber);
+        String answer = isNumberPrime(randomNumber) ? "yes" : "no";
+
+        String[] numberWithAnswer = new String[2];
+        numberWithAnswer[0] = question;
+        numberWithAnswer[1] = answer;
+
+        return numberWithAnswer;
+    }
+
+    public static boolean isNumberPrime(int number) {
         for (int i = 2; i < number; i++) {
             if (number % i == 0) {
-                return "no";
+                return false;
             }
         }
 
-        return "yes";
+        return true;
     }
 }
