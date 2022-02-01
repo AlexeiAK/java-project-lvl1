@@ -10,12 +10,14 @@ public class Even {
         String[] question = new String[Engine.MAX_ROUNDS];
         String[] answer = new String[Engine.MAX_ROUNDS];
 
+        String[][] questionAndAnswer = new String[Engine.MAX_ROUNDS][1];
+
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
             question[i] = Integer.toString(Utils.getNumberFromFinalRange());
             answer[i] = isNumberEven(Integer.parseInt(question[i]));
         }
 
-        Engine.startGame(GAME_RULES, question, answer);
+        Engine.startGame(GAME_RULES, questionAndAnswer);
     }
 
     public static String isNumberEven(int number) {

@@ -3,6 +3,7 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Calc {
@@ -13,28 +14,24 @@ public class Calc {
     static final int MAX_OF_RANDOM_RANGE = 1;
     static final int MIN_OF_RANDOM_RANGE = 10;
 
-    private static int expressionAnswer;
+//    private static int expressionAnswer;
 
     public static void startGame() {
-        String[] question = new String[Engine.MAX_ROUNDS];
-        String[] answer = new String[Engine.MAX_ROUNDS];
+//        String randomOperation = getRandomOperationSign();
+//        String[] questionAndAnswer = getRandomQuestionAndAnswer();
+
+//        String[] question = new String[Engine.MAX_ROUNDS];
+        String[][] questionAndAnswer = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
-            question[i] = getRandomExpression();
-            answer[i] = Integer.toString(Calc.expressionAnswer);
+            questionAndAnswer[i] = getRandomQuestionAndAnswer();
+//            answer[i] = questionAndAnswer[1];
         }
 
-        Engine.startGame(GAME_RULES, question, answer);
+        Engine.startGame(GAME_RULES, questionAndAnswer);
     }
 
-    public static String getRandomOperation() {
-        String[] totalOperations = {"addition", "subtraction", "multiplication"};
-        Random randomOperation = new Random();
-
-        return totalOperations[randomOperation.nextInt(NUMBER_OF_TYPES_MATH_OPERATIONS)];
-    }
-
-    public static String getRandomExpression() {
+    public static String[] getRandomQuestionAndAnswer() {
         String operandA = "";
         String operandB = "";
         String operator = "";
@@ -42,21 +39,23 @@ public class Calc {
         int a = Utils.getNumberFromMinMax(MAX_OF_RANDOM_RANGE, MIN_OF_RANDOM_RANGE);
         int b = Utils.getNumberFromMinMax(MAX_OF_RANDOM_RANGE, MIN_OF_RANDOM_RANGE);
 
-        switch (getRandomOperation()) {
-            case "addition":
-                Calc.expressionAnswer = a + b;
+        int answer = 0;
+
+        switch (getRandomOperationSign()) {
+            case "+":
+                answer = a + b;
                 operandA = Integer.toString(a);
                 operandB = Integer.toString(b);
                 operator = "+";
                 break;
-            case "subtraction":
-                Calc.expressionAnswer = a - b;
+            case "-":
+                answer = a - b;
                 operandA = Integer.toString(a);
                 operandB = Integer.toString(b);
                 operator = "-";
                 break;
-            case "multiplication":
-                Calc.expressionAnswer = a * b;
+            case "*":
+                answer = a * b;
                 operandA = Integer.toString(a);
                 operandB = Integer.toString(b);
                 operator = "*";
@@ -65,6 +64,17 @@ public class Calc {
                 break;
         }
 
-        return operandA + " " + operator + " " + operandB;
+        String[] questionAndAnswer = new String[2];
+        questionAndAnswer[0] = operandA + " " + operator + " " + operandB;
+        questionAndAnswer[1] = Integer.toString(answer);
+//        System.out.println(Arrays.toString(questionAndAnswer));
+        return questionAndAnswer;
+    }
+
+    public static String getRandomOperationSign() {
+        String[] totalOperations = {"+", "-", "*"};
+        Random randomOperation = new Random();
+
+        return totalOperations[randomOperation.nextInt(NUMBER_OF_TYPES_MATH_OPERATIONS)];
     }
 }

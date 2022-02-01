@@ -15,6 +15,8 @@ public class Progression {
         String[] question = new String[Engine.MAX_ROUNDS];
         String[] answer = new String[Engine.MAX_ROUNDS];
 
+        String[][] questionAndAnswer = new String[Engine.MAX_ROUNDS][1];
+
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
             String[] randomExpressionWithAnswer = getProgressionWithAnswer();
 
@@ -22,7 +24,7 @@ public class Progression {
             answer[i] = randomExpressionWithAnswer[1];
         }
 
-        Engine.startGame(GAME_RULES, question, answer);
+        Engine.startGame(GAME_RULES, questionAndAnswer);
     }
 
     public static String[] getProgressionWithAnswer() {
