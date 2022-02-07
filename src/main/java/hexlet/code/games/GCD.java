@@ -12,22 +12,21 @@ public class GCD {
         String[][] questionAndAnswer = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
-            questionAndAnswer[i] = getGcdWithAnswer();
+            BigInteger number1 = new BigInteger(Integer.toString(Utils.getNumberFromFinalRange()));
+            BigInteger number2 = new BigInteger(Integer.toString(Utils.getNumberFromFinalRange()));
+
+            questionAndAnswer[i] = getGcdWithAnswer(number1, number2);
         }
 
         Engine.startGame(GAME_RULES, questionAndAnswer);
     }
 
-    public static String[] getGcdWithAnswer() {
-        BigInteger number1 = new BigInteger(Integer.toString(Utils.getNumberFromFinalRange()));
-        BigInteger number2 = new BigInteger(Integer.toString(Utils.getNumberFromFinalRange()));
+    public static String[] getGcdWithAnswer(BigInteger number1, BigInteger number2) {
         BigInteger gcd = number1.gcd(number2);
 
-        String[] gcdWithAnswer = new String[2];
-        gcdWithAnswer[0] = number1 + " " + number2;
-        gcdWithAnswer[1] = gcd.toString();
+        String question = number1 + " " + number2;
+        String answer = gcd.toString();
 
-        return gcdWithAnswer;
+        return Utils.formQuestionAndAnswer(question, answer);
     }
-
 }

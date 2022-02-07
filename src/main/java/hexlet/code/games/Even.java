@@ -10,23 +10,18 @@ public class Even {
         String[][] questionAndAnswer = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
-            questionAndAnswer[i] = getNumberWithAnswer();
+            int randomNumber = Utils.getNumberFromFinalRange();
+            questionAndAnswer[i] = getNumberWithAnswer(randomNumber);
         }
 
         Engine.startGame(GAME_RULES, questionAndAnswer);
     }
 
-    public static String[] getNumberWithAnswer() {
-        int randomNumber = Utils.getNumberFromFinalRange();
-
+    public static String[] getNumberWithAnswer(int randomNumber) {
         String question = Integer.toString(randomNumber);
         String answer = isNumberEven(randomNumber) ? "yes" : "no";
 
-        String[] numberWithAnswer = new String[2];
-        numberWithAnswer[0] = question;
-        numberWithAnswer[1] = answer;
-
-        return numberWithAnswer;
+        return Utils.formQuestionAndAnswer(question, answer);
     }
 
     public static boolean isNumberEven(int number) {

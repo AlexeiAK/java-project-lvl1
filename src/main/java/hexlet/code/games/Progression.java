@@ -13,31 +13,37 @@ public class Progression {
         String[][] questionAndAnswer = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
-            questionAndAnswer[i] = getProgressionWithAnswer();
+            int progressionLength = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
+            int firstNumberOfProgression = Utils.getNumberFromFinalRange();
+            int stepOfProgression = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
+            int indexOfhiddenElement = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, progressionLength);
+
+            questionAndAnswer[i] = getProgressionWithAnswer(progressionLength,
+                    firstNumberOfProgression,
+                    stepOfProgression,
+                    indexOfhiddenElement);
         }
 
         Engine.startGame(GAME_RULES, questionAndAnswer);
     }
 
-    public static String[] getProgressionWithAnswer() {
-        int progressionLength = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
-        int firstNumberOfProgression = Utils.getNumberFromFinalRange();
-        int stepOfProgression = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
-        int indexOfhiddenElement = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, progressionLength);
+    public static String[] getProgressionWithAnswer(int progressionLength,
+                                                    int firstNumberOfProgression,
+                                                    int stepOfProgression,
+                                                    int indexOfhiddenElement) {
 
         int[] progressionIntRow = new int[progressionLength];
+
         fillTheProgression(progressionIntRow, firstNumberOfProgression, stepOfProgression);
 
         String[] progressionStringRow = intArrayToStringArray(progressionIntRow);
         String hiddenElement = getAndhideRandomElementOfStringRow(progressionStringRow, indexOfhiddenElement - 1);
 
-        String[] progressionWithAnswer = new String[2];
-        progressionWithAnswer[0] = stringArrayToString(progressionStringRow);
-        progressionWithAnswer[1] = hiddenElement;
+        String question = stringArrayToString(progressionStringRow);
+        String answer = hiddenElement;
 
-        return progressionWithAnswer;
+        return Utils.formQuestionAndAnswer(question, answer);
     }
-
 
     public static void fillTheProgression(int[] progression, int firstNumberOfProgression, int stepOfProgression) {
         progression[0] = firstNumberOfProgression;
@@ -70,6 +76,6 @@ public class Progression {
             stringOfArray = stringOfArray + " " + array[i];
         }
 
-        return stringOfArray;
+        return stringOfArray.toString();
     }
 }
