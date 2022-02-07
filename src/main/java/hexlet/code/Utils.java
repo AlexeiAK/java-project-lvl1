@@ -13,4 +13,12 @@ public class Utils {
         max -= min;
         return (int) (Math.random() * ++max) + min;
     }
+
+    public static String[] formQuestionAndAnswer(String question, String answer) {
+        String[] questionAndAnswer = new String[2];
+        questionAndAnswer[0] = question;
+        questionAndAnswer[1] = answer;
+
+        return questionAndAnswer;
+    }
 }

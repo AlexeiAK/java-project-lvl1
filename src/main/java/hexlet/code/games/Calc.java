@@ -17,50 +17,30 @@ public class Calc {
         String[][] questionAndAnswer = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
-            questionAndAnswer[i] = getRandomQuestionAndAnswer();
+            int operandA = Utils.getNumberFromMinMax(MAX_OF_RANDOM_RANGE, MIN_OF_RANDOM_RANGE);
+            int operandB = Utils.getNumberFromMinMax(MAX_OF_RANDOM_RANGE, MIN_OF_RANDOM_RANGE);
+            String operator = getRandomOperationSign();
+
+            questionAndAnswer[i] = getRandomQuestionAndAnswer(operandA, operandB, operator);
         }
 
         Engine.startGame(GAME_RULES, questionAndAnswer);
     }
 
-    public static String[] getRandomQuestionAndAnswer() {
-        String operandA = "";
-        String operandB = "";
-        String operator = "";
+    public static String[] getRandomQuestionAndAnswer(int operandA, int operandB, String operator) {
+        String a = Integer.toString(operandA);
+        String b = Integer.toString(operandB);
 
-        int a = Utils.getNumberFromMinMax(MAX_OF_RANDOM_RANGE, MIN_OF_RANDOM_RANGE);
-        int b = Utils.getNumberFromMinMax(MAX_OF_RANDOM_RANGE, MIN_OF_RANDOM_RANGE);
+        String question = a + " " + operator + " " + b;
 
-        int answer = 0;
+        String answer = switch (operator) {
+            case "+" -> Integer.toString(operandA + operandB);
+            case "-" -> Integer.toString(operandA - operandB);
+            case "*" -> Integer.toString(operandA * operandB);
+            default -> "Wrong operator!";
+        };
 
-        switch (getRandomOperationSign()) {
-            case "+":
-                answer = a + b;
-                operandA = Integer.toString(a);
-                operandB = Integer.toString(b);
-                operator = "+";
-                break;
-            case "-":
-                answer = a - b;
-                operandA = Integer.toString(a);
-                operandB = Integer.toString(b);
-                operator = "-";
-                break;
-            case "*":
-                answer = a * b;
-                operandA = Integer.toString(a);
-                operandB = Integer.toString(b);
-                operator = "*";
-                break;
-            default:
-                break;
-        }
-
-        String[] questionAndAnswer = new String[2];
-        questionAndAnswer[0] = operandA + " " + operator + " " + operandB;
-        questionAndAnswer[1] = Integer.toString(answer);
-
-        return questionAndAnswer;
+        return Utils.formQuestionAndAnswer(question, answer);
     }
 
     public static String getRandomOperationSign() {
