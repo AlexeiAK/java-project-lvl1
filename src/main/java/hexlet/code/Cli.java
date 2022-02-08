@@ -8,7 +8,7 @@ public class Cli {
         return player1Name;
     }
 
-    public static void printGreet() {
+    public static void printGreet() { /*printGreetAndGetPlayerName*/
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("\nWelcome to the Brain Games!\n"
