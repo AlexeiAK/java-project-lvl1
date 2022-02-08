@@ -15,10 +15,10 @@ public class Utils {
     }
 
     public static String[] formQuestionAndAnswer(String question, String answer) {
-        String[] questionAndAnswer = new String[2];
-        questionAndAnswer[0] = question;
-        questionAndAnswer[1] = answer;
+        String[] questionsAndAnswers = new String[2];
+        questionsAndAnswers[0] = question;
+        questionsAndAnswers[1] = answer;
 
-        return questionAndAnswer;
+        return questionsAndAnswers;
     }
 }

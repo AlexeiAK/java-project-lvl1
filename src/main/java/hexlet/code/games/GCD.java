@@ -9,16 +9,16 @@ public class GCD {
     static final String GAME_RULES = "Find the greatest common divisor of given numbers.";
 
     public static void startGame() {
-        String[][] questionAndAnswer = new String[Engine.MAX_ROUNDS][1];
+        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
             BigInteger number1 = new BigInteger(Integer.toString(Utils.getNumberFromFinalRange()));
             BigInteger number2 = new BigInteger(Integer.toString(Utils.getNumberFromFinalRange()));
 
-            questionAndAnswer[i] = getGcdWithAnswer(number1, number2);
+            questionsAndAnswers[i] = getGcdWithAnswer(number1, number2);
         }
 
-        Engine.startGame(GAME_RULES, questionAndAnswer);
+        Engine.startGame(GAME_RULES, questionsAndAnswers);
     }
 
     public static String[] getGcdWithAnswer(BigInteger number1, BigInteger number2) {

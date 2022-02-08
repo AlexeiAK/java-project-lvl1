@@ -10,7 +10,7 @@ public class Progression {
     static final int MAX_OF_PROGRESSION_LENGTH = 10;
 
     public static void startGame() {
-        String[][] questionAndAnswer = new String[Engine.MAX_ROUNDS][1];
+        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
             int progressionLength = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
@@ -18,13 +18,13 @@ public class Progression {
             int stepOfProgression = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
             int indexOfhiddenElement = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, progressionLength);
 
-            questionAndAnswer[i] = getProgressionWithAnswer(progressionLength,
+            questionsAndAnswers[i] = getProgressionWithAnswer(progressionLength,
                     firstNumberOfProgression,
                     stepOfProgression,
                     indexOfhiddenElement);
         }
 
-        Engine.startGame(GAME_RULES, questionAndAnswer);
+        Engine.startGame(GAME_RULES, questionsAndAnswers);
     }
 
     public static String[] getProgressionWithAnswer(int progressionLength,

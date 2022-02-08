@@ -7,14 +7,14 @@ public class Prime {
     static final String GAME_RULES = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
     public static void startGame() {
-        String[][] questionAndAnswer = new String[Engine.MAX_ROUNDS][1];
+        String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
             int randomNumber = Utils.getNumberFromFinalRange();
-            questionAndAnswer[i] = getNumberWithAnswer(randomNumber);
+            questionsAndAnswers[i] = getNumberWithAnswer(randomNumber);
         }
 
-        Engine.startGame(GAME_RULES, questionAndAnswer);
+        Engine.startGame(GAME_RULES, questionsAndAnswers);
     }
 
     public static String[] getNumberWithAnswer(int randomNumber) {
