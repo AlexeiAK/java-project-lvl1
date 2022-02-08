@@ -17,8 +17,8 @@ public class Calc {
         String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
-            int operandA = Utils.getNumberFromMinMax(MAX_OF_RANDOM_RANGE, MIN_OF_RANDOM_RANGE);
-            int operandB = Utils.getNumberFromMinMax(MAX_OF_RANDOM_RANGE, MIN_OF_RANDOM_RANGE);
+            int operandA = Utils.getRandomInRange(MAX_OF_RANDOM_RANGE, MIN_OF_RANDOM_RANGE);
+            int operandB = Utils.getRandomInRange(MAX_OF_RANDOM_RANGE, MIN_OF_RANDOM_RANGE);
             String operator = getRandomOperationSign();
 
             questionsAndAnswers[i] = getRandomQuestionAndAnswer(operandA, operandB, operator);
@@ -40,7 +40,7 @@ public class Calc {
             default -> "Wrong operator!";
         };
 
-        return Utils.formQuestionAndAnswer(question, answer);
+        return Utils.pairOf(question, answer);
     }
 
     public static String getRandomOperationSign() {

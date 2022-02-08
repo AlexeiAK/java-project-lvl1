@@ -10,7 +10,7 @@ public class Even {
         String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
-            int randomNumber = Utils.getNumberFromFinalRange();
+            int randomNumber = Utils.getRandom();
             questionsAndAnswers[i] = getNumberWithAnswer(randomNumber);
         }
 
@@ -21,7 +21,7 @@ public class Even {
         String question = Integer.toString(randomNumber);
         String answer = isNumberEven(randomNumber) ? "yes" : "no";
 
-        return Utils.formQuestionAndAnswer(question, answer);
+        return Utils.pairOf(question, answer);
     }
 
     public static boolean isNumberEven(int number) {

@@ -13,10 +13,10 @@ public class Progression {
         String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
-            int progressionLength = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
-            int firstNumberOfProgression = Utils.getNumberFromFinalRange();
-            int stepOfProgression = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
-            int indexOfhiddenElement = Utils.getNumberFromMinMax(MIN_OF_PROGRESSION_LENGTH, progressionLength);
+            int progressionLength = Utils.getRandomInRange(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
+            int firstNumberOfProgression = Utils.getRandom();
+            int stepOfProgression = Utils.getRandomInRange(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
+            int indexOfhiddenElement = Utils.getRandomInRange(MIN_OF_PROGRESSION_LENGTH, progressionLength);
 
             questionsAndAnswers[i] = getProgressionWithAnswer(progressionLength,
                     firstNumberOfProgression,
@@ -42,7 +42,7 @@ public class Progression {
         String question = stringArrayToString(progressionStringRow);
         String answer = hiddenElement;
 
-        return Utils.formQuestionAndAnswer(question, answer);
+        return Utils.pairOf(question, answer);
     }
 
     public static void fillTheProgression(int[] progression, int firstNumberOfProgression, int stepOfProgression) {

@@ -12,8 +12,8 @@ public class GCD {
         String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
-            BigInteger number1 = new BigInteger(Integer.toString(Utils.getNumberFromFinalRange()));
-            BigInteger number2 = new BigInteger(Integer.toString(Utils.getNumberFromFinalRange()));
+            BigInteger number1 = new BigInteger(Integer.toString(Utils.getRandom()));
+            BigInteger number2 = new BigInteger(Integer.toString(Utils.getRandom()));
 
             questionsAndAnswers[i] = getGcdWithAnswer(number1, number2);
         }
@@ -27,6 +27,6 @@ public class GCD {
         String question = number1 + " " + number2;
         String answer = gcd.toString();
 
-        return Utils.formQuestionAndAnswer(question, answer);
+        return Utils.pairOf(question, answer);
     }
 }
