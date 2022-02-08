@@ -11,17 +11,13 @@ public class Even {
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
             int randomNumber = Utils.getRandom();
-            questionsAndAnswers[i] = getNumberWithAnswer(randomNumber);
+
+            questionsAndAnswers[i] = new String[]{
+                    Integer.toString(randomNumber),
+                    isNumberEven(randomNumber) ? "yes" : "no"};
         }
 
         Engine.startGame(GAME_RULES, questionsAndAnswers);
-    }
-
-    public static String[] getNumberWithAnswer(int randomNumber) {
-        String question = Integer.toString(randomNumber);
-        String answer = isNumberEven(randomNumber) ? "yes" : "no";
-
-        return Utils.pairOf(question, answer);
     }
 
     public static boolean isNumberEven(int number) {
