@@ -13,69 +13,48 @@ public class Progression {
         String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
-            int progressionLength = Utils.getRandomInRange(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
             int firstNumberOfProgression = Utils.getRandom();
             int stepOfProgression = Utils.getRandomInRange(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
-            int indexOfhiddenElement = Utils.getRandomInRange(MIN_OF_PROGRESSION_LENGTH, progressionLength);
 
-            questionsAndAnswers[i] = getProgressionWithAnswer(progressionLength,
-                    firstNumberOfProgression,
-                    stepOfProgression,
-                    indexOfhiddenElement);
+            int progressionLength = Utils.getRandomInRange(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
+            int[] progressionIntRow = new int[progressionLength];
+
+            progressionIntRow = buildProgression(progressionIntRow, firstNumberOfProgression, stepOfProgression);
+            int indexOfhiddenElement = Utils.getRandomInRange(MIN_OF_PROGRESSION_LENGTH - 1, progressionLength - 1);
+
+
+            questionsAndAnswers[i] = new String[]{
+                buildQuestion(progressionIntRow, indexOfhiddenElement),
+                Integer.toString(progressionIntRow[indexOfhiddenElement])
+            };
         }
 
         Engine.startGame(GAME_RULES, questionsAndAnswers);
     }
 
-    public static String[] getProgressionWithAnswer(int progressionLength,
-                                                    int firstNumberOfProgression,
-                                                    int stepOfProgression,
-                                                    int indexOfhiddenElement) {
+    public static int[] buildProgression(int[] progression, int firstNumberOfProgression, int stepOfProgression) {
+        int[] progressionCopy = progression;
+        progressionCopy[0] = firstNumberOfProgression;
 
-        int[] progressionIntRow = new int[progressionLength];
-
-        fillTheProgression(progressionIntRow, firstNumberOfProgression, stepOfProgression);
-
-        String[] progressionStringRow = intArrayToStringArray(progressionIntRow);
-        String hiddenElement = getAndhideRandomElementOfStringRow(progressionStringRow, indexOfhiddenElement - 1);
-
-        String question = stringArrayToString(progressionStringRow);
-        String answer = hiddenElement;
-
-        return Utils.pairOf(question, answer);
-    }
-
-    public static void fillTheProgression(int[] progression, int firstNumberOfProgression, int stepOfProgression) {
-        progression[0] = firstNumberOfProgression;
-
-        for (int i = 1; i < progression.length; i++) {
-            progression[i] = progression[i - 1] + stepOfProgression;
-        }
-    }
-
-    public static String[] intArrayToStringArray(int[] intArray) {
-        String[] stringArray = new String[intArray.length];
-        for (int i = 0; i < intArray.length; i++) {
-            stringArray[i] = Integer.toString(intArray[i]);
+        for (int i = 1; i < progressionCopy.length; i++) {
+            progressionCopy[i] = progressionCopy[i - 1] + stepOfProgression;
         }
 
-        return stringArray;
+        return progressionCopy;
     }
 
-    public static String getAndhideRandomElementOfStringRow(String[] progression, int indexOfhiddenElement) {
-        String hiddenElement = progression[indexOfhiddenElement];
-        progression[indexOfhiddenElement] = "..";
-
-        return hiddenElement;
-    }
-
-    public static String stringArrayToString(String[] array) {
-        String stringOfArray = array[0]; // for avoid second space at the beginning of stringOfArray
+    public static String buildQuestion(int[] array, int indexOfhiddenElement) {
+        // for avoid second space at the beginning of stringOfArray
+        String stringOfArray = Integer.toString(array[0]);
 
         for (int i = 1; i < array.length; i++) {
-            stringOfArray = stringOfArray + " " + array[i];
+            if (i == indexOfhiddenElement) {
+                stringOfArray = stringOfArray + " " + "..";
+            } else {
+                stringOfArray = stringOfArray + " " + array[i];
+            }
         }
 
-        return stringOfArray.toString();
+        return stringOfArray;
     }
 }
