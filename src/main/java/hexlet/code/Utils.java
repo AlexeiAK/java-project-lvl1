@@ -17,12 +17,4 @@ public class Utils {
     public static int getRandomToMax(int max) {
         return getRandomInRange(0, max);
     }
-
-    public static String[] pairOf(String question, String answer) {
-        String[] questionsAndAnswers = new String[2];
-        questionsAndAnswers[0] = question;
-        questionsAndAnswers[1] = answer;
-
-        return questionsAndAnswers;
-    }
 }

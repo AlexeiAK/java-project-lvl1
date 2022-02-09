@@ -6,18 +6,21 @@ public class Engine {
     public static final int MAX_ROUNDS = 3;
 
     public static void startGame(String gameRules, String[][] questionsAndAnswers) {
-        Cli.printGreet();
+        Scanner nameScanner = new Scanner(System.in);
+
+        System.out.print("\nWelcome to the Brain Games!\n"
+                + "May I have your name? ");
+        String playerName = nameScanner.nextLine();
+
+        System.out.println("Hello, " + playerName + "!");
         System.out.println(gameRules);
 
-        Scanner scanner = new Scanner(System.in);
-        String playerAnswer;
-
-        String playerName = Cli.getName();
+        Scanner answerScanner = new Scanner(System.in);
 
         for (int i = 0; i < MAX_ROUNDS; i++) {
             System.out.println("Question: " + questionsAndAnswers[i][0]);
             System.out.print("Your answer: ");
-            playerAnswer = scanner.next();
+            String playerAnswer = answerScanner.next();
 
             if (questionsAndAnswers[i][1].equals(playerAnswer)) {
                 System.out.println("Correct!");
