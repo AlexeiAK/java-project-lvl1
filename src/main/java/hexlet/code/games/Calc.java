@@ -18,8 +18,9 @@ public class Calc {
             String operator = getRandomOperationSign();
 
             questionsAndAnswers[i] = new String[]{
-                    operandA + " " + operator + " " + operandB,
-                    calculate(operator, operandA, operandB)};
+                operandA + " " + operator + " " + operandB,
+                calculate(operator, operandA, operandB)
+            };
         }
 
         Engine.startGame(GAME_RULES, questionsAndAnswers);

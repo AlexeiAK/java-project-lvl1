@@ -12,21 +12,16 @@ public class GCD {
         String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][1];
 
         for (int i = 0; i < Engine.MAX_ROUNDS; i++) {
-            BigInteger number1 = new BigInteger(Integer.toString(Utils.getRandom()));
-            BigInteger number2 = new BigInteger(Integer.toString(Utils.getRandom()));
+            BigInteger number1 = BigInteger.valueOf(Utils.getRandom());
+            BigInteger number2 = BigInteger.valueOf(Utils.getRandom());
+            BigInteger gcd = number1.gcd(number2);
 
-            questionsAndAnswers[i] = getGcdWithAnswer(number1, number2);
+            questionsAndAnswers[i] = new String[]{
+                number1 + " " + number2,
+                gcd.toString()
+            };
         }
 
         Engine.startGame(GAME_RULES, questionsAndAnswers);
-    }
-
-    public static String[] getGcdWithAnswer(BigInteger number1, BigInteger number2) {
-        BigInteger gcd = number1.gcd(number2);
-
-        String question = number1 + " " + number2;
-        String answer = gcd.toString();
-
-        return Utils.pairOf(question, answer);
     }
 }

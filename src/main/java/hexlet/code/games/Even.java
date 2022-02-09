@@ -13,8 +13,9 @@ public class Even {
             int randomNumber = Utils.getRandom();
 
             questionsAndAnswers[i] = new String[]{
-                    Integer.toString(randomNumber),
-                    isNumberEven(randomNumber) ? "yes" : "no"};
+                Integer.toString(randomNumber),
+                isNumberEven(randomNumber) ? "yes" : "no"
+            };
         }
 
         Engine.startGame(GAME_RULES, questionsAndAnswers);
