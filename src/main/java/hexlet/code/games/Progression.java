@@ -42,17 +42,18 @@ public class Progression {
     }
 
     public static String buildQuestion(int[] array, int indexOfhiddenElement) {
+        StringBuilder stringOfArray = new StringBuilder();
         // for avoid second space at the beginning of row
-        String stringOfArray = Integer.toString(array[0]);
+        stringOfArray.append(array[0]);
 
         for (int i = 1; i < array.length; i++) {
             if (i == indexOfhiddenElement) {
-                stringOfArray = stringOfArray + " " + "..";
+                stringOfArray.append(" ").append("..");
             } else {
-                stringOfArray = stringOfArray + " " + array[i];
+                stringOfArray.append(" ").append(array[i]);
             }
         }
 
-        return stringOfArray;
+        return stringOfArray.toString();
     }
 }
