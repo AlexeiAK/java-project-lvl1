@@ -15,7 +15,6 @@ public class Engine {
         System.out.println("Hello, " + playerName + "!");
         System.out.println(gameRules);
 
-        int roundsCounter = 0;
         Scanner answerScanner = new Scanner(System.in);
 
         for (String[] questionAndAnswer : questionsAndAnswers) {
@@ -28,7 +27,6 @@ public class Engine {
 
             if (answer.equals(playerAnswer)) {
                 System.out.println("Correct!");
-                roundsCounter++;
             } else {
                 System.out.print("'" + playerAnswer + "' is wrong answer ;(. Correct answer was '"
                         + answer + "'.\n"
@@ -37,8 +35,6 @@ public class Engine {
             }
         }
 
-        if (roundsCounter == MAX_ROUNDS) {
-            System.out.println("Congratulations, " + playerName + "!");
-        }
+        System.out.println("Congratulations, " + playerName + "!");
     }
 }

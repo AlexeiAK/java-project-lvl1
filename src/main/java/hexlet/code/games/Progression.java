@@ -17,11 +17,9 @@ public class Progression {
             int stepOfProgression = Utils.getRandomInRange(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
 
             int progressionLength = Utils.getRandomInRange(MIN_OF_PROGRESSION_LENGTH, MAX_OF_PROGRESSION_LENGTH);
-            int[] progressionIntRow = new int[progressionLength];
 
-            progressionIntRow = buildProgression(progressionIntRow, firstNumberOfProgression, stepOfProgression);
+            int[] progressionIntRow = buildProgression(progressionLength, firstNumberOfProgression, stepOfProgression);
             int indexOfhiddenElement = Utils.getRandomInRange(MIN_OF_PROGRESSION_LENGTH - 1, progressionLength - 1);
-
 
             questionsAndAnswers[i] = new String[]{
                 buildQuestion(progressionIntRow, indexOfhiddenElement),
@@ -32,15 +30,15 @@ public class Progression {
         Engine.startGame(GAME_RULES, questionsAndAnswers);
     }
 
-    public static int[] buildProgression(int[] progression, int firstNumberOfProgression, int stepOfProgression) {
-        int[] progressionCopy = progression;
-        progressionCopy[0] = firstNumberOfProgression;
+    public static int[] buildProgression(int progressionLength, int firstNumberOfProgression, int stepOfProgression) {
+        int[] progression = new int[progressionLength];
+        progression[0] = firstNumberOfProgression;
 
-        for (int i = 1; i < progressionCopy.length; i++) {
-            progressionCopy[i] = progressionCopy[i - 1] + stepOfProgression;
+        for (int i = 1; i < progression.length; i++) {
+            progression[i] = progression[i - 1] + stepOfProgression;
         }
 
-        return progressionCopy;
+        return progression;
     }
 
     public static String buildQuestion(int[] array, int indexOfhiddenElement) {
