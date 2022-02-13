@@ -9,6 +9,8 @@ public class Calc {
     static final int MAX_OF_RANDOM_RANGE = 1;
     static final int MIN_OF_RANDOM_RANGE = 10;
 
+    static final String[] OPERATORS = {"+", "-", "*"};
+
     public static void startGame() {
         String[][] questionsAndAnswers = new String[Engine.MAX_ROUNDS][1];
 
@@ -36,8 +38,7 @@ public class Calc {
     }
 
     public static String getRandomOperationSign() {
-        String[] totalOperations = {"+", "-", "*"};
-
-        return totalOperations[Utils.getRandomToMax(totalOperations.length - 1)];
+        int randomNumberOfOperatpr = Utils.getRandomToMax(OPERATORS.length - 1);
+        return OPERATORS[randomNumberOfOperatpr];
     }
 }
